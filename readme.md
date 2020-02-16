@@ -1,2 +1,2 @@
-## Laberinto construido con PGAME Python
+## Laberinto construido con PYGAME Python
 
