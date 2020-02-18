@@ -21,9 +21,8 @@ class Sahara:
             "impala5": self.impala5
         }
 
-        # self.lion2.detectProximity(self._ubicationImpalas)
-
-    def drawAnimals(self):
+    def getAnimals(self):
+        self._window.fill((48, 163, 71))
         self._window.blit(self.impala1.Image, self.impala1.animal)
         self._window.blit(self.impala2.Image, self.impala2.animal)
         self._window.blit(self.impala3.Image, self.impala3.animal)
@@ -34,15 +33,14 @@ class Sahara:
         self._window.blit(self.lion2.Image, self.lion2.animal)
         self.drawRect()
 
-        self.lion1.detect_proximity("Leon1", self._ubicationImpalas)
-        self.lion2.detect_proximity("Leon2", self._ubicationImpalas)
+    def drawAnimals(self):
+        self.getAnimals()
+        # self.drawRect()
+        self.lion1.detect_proximity(
+            "Leon1", self._ubicationImpalas, self.getAnimals)
+        self.lion2.detect_proximity(
+            "Leon2", self._ubicationImpalas, self.getAnimals)
 
     def drawRect(self):
         self.lion1.drawRect()
         self.lion2.drawRect()
-
-        # self.impala1.rect.drawRect()
-        # self.impala2.rect.drawRect()
-        # self.impala3.rect.drawRect()
-        # self.impala4.rect.drawRect()
-        # self.impala5.rect.drawRect()

@@ -1,18 +1,26 @@
 from Models.Animal import Animal
 import pygame
+import time
 
 
 class Lion(Animal):
     def __init__(self, window):
         super().__init__(window, './resourses/lion.png', (204, 78, 78))
 
-    def drawRect(self):
-        for idx in self.scope:
-            pygame.draw.rect(self._window, self._location, [
-                idx[0], idx[1], self._size, self._size])
-
-    def detect_proximity(self, name, impalas):
+    def detect_proximity(self, name, impalas, fn):
+        self.scope = []
         for idx, impala in impalas.items():
             for cuadro in self.squares:
+                self._validateAddress(self.animalLook)
                 if cuadro.colliderect(impala.animal):
-                    print(f'{name} {self.physical_condition} persive a {idx}')
+                    if self.animal.x > impala.animal.x:
+                        self.animal.x -= 1
+                    elif self.animal.x < impala.animal.x:
+                        self.animal.x += 1
+                    elif self.animal.y > impala.animal.y:
+                        self.animal.y -= 1
+                    elif self.animal.y < impala.animal.y:
+                        self.animal.y += 1
+                    elif self.animal.x == impala.animal.x and self.animal.y == impala.animal.y:
+                        print(f'{name} {self.physical_condition} cazó {idx}')
+                        return fn()

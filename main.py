@@ -13,13 +13,14 @@ CONTAINER = (width, heigth)
 
 def run_game(window, sahara):
     while True:
-        window.fill(GREEN)
+        pygame.time.delay(25)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
         sahara.drawAnimals()
         pygame.display.flip()
+        pygame.display.update()
     pygame.quit()
 
 

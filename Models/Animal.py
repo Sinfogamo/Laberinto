@@ -26,10 +26,10 @@ class Animal:
         random.shuffle(physical_condition)
         self.physical_condition = physical_condition[0]
         # Get Lion Look
-        animalLook = self._randomAddress(self.animal.x, self.animal.y)
+        self.animalLook = self._randomAddress(self.animal.x, self.animal.y)
         # print(animalLook)
         # validate direction and draw
-        self._validateAddress(animalLook)
+        self._validateAddress(self.animalLook)
         self.get_squares()
 
     def _getPosition(self, limit):
@@ -55,7 +55,6 @@ class Animal:
         return lookList[0]
 
     def _validateAddress(self, look):
-        self.paintLook = []
         if look == self._frente:
             # dibujar hacia adelante
             ejeX = self._frente
@@ -112,11 +111,11 @@ class Animal:
     def _drawLook(self, x, y):
         self.scope.append((x, y))
 
-    # def drawRect(self):
-    #     for idx in self.scope:
-    #         # print("Eje X: {} Eje Y: {}".format(idx[0], idx[1]))
-    #         pygame.draw.rect(self._window, self._location, [
-    #             idx[0], idx[1], self._size, self._size])
+    def drawRect(self):
+        for idx in self.scope:
+            pygame.draw.rect(self._window, self._location, [
+                idx[0], idx[1], self._size, self._size])
+        # self.scope = []
 
     def get_squares(self):
         for idx in self.scope:
