@@ -22,9 +22,11 @@ class Animal:
         self.animal = self.Image.get_rect()
         self.animal.x = self._getPosition(self.widthContainer - self._size)
         self.animal.y = self._getPosition(self.heigthContainer - self._size)
-        physical_condition = ["Viejo", "Joven", "Pequeño"]
-        random.shuffle(physical_condition)
+        physical_condition = ["Cachorro", "Joven", "Maduro"]
+        size_animal = ["Grande", "Mediano", "Pequeño"]
+        random.shuffle(physical_condition), random.shuffle(size_animal)
         self.physical_condition = physical_condition[0]
+        self.size_animal = size_animal[0]
         # Get Lion Look
         self.animalLook = self._randomAddress(self.animal.x, self.animal.y)
         # print(animalLook)
@@ -114,7 +116,7 @@ class Animal:
     def drawRect(self):
         for idx in self.scope:
             pygame.draw.rect(self._window, self._location, [
-                idx[0], idx[1], self._size, self._size])
+                idx[0], idx[1], self._size, self._size], 2)
         # self.scope = []
 
     def get_squares(self):
